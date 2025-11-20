@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official FMIPA UNTAN</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header with Image Background */
+        .header-middle {
+            background-size: cover;
+            background-position: center;
+            padding: 20px 0;
+        }
+
+        .menuzord-brand img {
+            max-height: 55px !important;
+        }
+
+        /* Navbar Styles */
+        .header-nav-wrapper {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .menuzord-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .menuzord-menu > li {
+            position: relative;
+        }
+
+        .menuzord-menu > li > a {
+            display: block;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .menuzord-menu > li > a:hover,
+        .menuzord-menu > li.active > a {
+            background-color: #FFEA00;
+            color: #212331;
+            border-radius: 5px;
+            box-shadow: 1px 2px 4px #888888;
+        }
+
+        /* Dropdown Styles */
+        .menuzord-menu .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            z-index: 1000;
+        }
+
+        .menuzord-menu li:hover > .dropdown {
+            display: block;
+        }
+
+        .menuzord-menu .dropdown li {
+            position: relative;
+        }
+
+        .menuzord-menu .dropdown li a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 11px;
+            transition: all 0.3s ease;
+        }
+
+        .menuzord-menu .dropdown li a:hover {
+            background-color: #FFEA00;
+            color: #000;
+        }
+
+        /* Nested Dropdown */
+        .menuzord-menu .dropdown .dropdown {
+            left: 100%;
+            top: 0;
+        }
+
+        /* Mobile Menu Toggle */
+        .menuzord-toggle {
+            display: none;
+            background: #FFEA00;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        @media (max-width: 992px) {
+            .menuzord-toggle {
+                display: block;
+            }
+
+            .menuzord-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .menuzord-menu.show {
+                display: flex;
+            }
+
+            .menuzord-menu > li {
+                width: 100%;
+            }
+
+            .menuzord-menu .dropdown {
+                position: static;
+                box-shadow: none;
+                padding-left: 20px;
+            }
+
+            .menuzord-menu li:hover > .dropdown {
+                display: none;
+            }
+
+            .menuzord-menu li.open > .dropdown {
+                display: block;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Hero Video Section */
+        .hero-video-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .hero-text {
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #FFD700;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .btn-hero {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary-hero {
+            background: #FFD700;
+            color: #000;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-primary-hero:hover {
+            background: #FFA500;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-outline-hero {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline-hero:hover {
+            background: white;
+            color: #003d82;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #f39c12;
+        }
+
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Dekan Section */
+        .dekan-section {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .dekan-photo {
+            text-align: center;
+            position: relative;
+        }
+
+        .dekan-photo img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border: 5px solid #f39c12;
+            border-radius: 50%;
+        }
+
+        .dekan-info {
+            margin-top: 1.5rem;
+        }
+
+        .dekan-info h4 {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .dekan-info p {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .sambutan-content {
+            padding-left: 2rem;
+        }
+
+        .sambutan-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Visi Misi Section */
+        .visi-misi-section {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+
+        .vision-card,
+        .mission-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 100%;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .vision-card:hover,
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: #f39c12;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .vision-card h3,
+        .mission-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .mission-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mission-card li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .mission-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        /* Program Studi Section Styles */
+        .program-studi-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .program-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .program-card img {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .program-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .program-card .card-body {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .program-card .card-title {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-card .card-text {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .program-modal .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .program-modal .modal-header {
+            border-bottom: 2px solid #f39c12;
+            background: #f8f9fa;
+        }
+
+        .program-modal .modal-title {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .program-info {
+            margin-bottom: 1rem;
+        }
+
+        .program-info strong {
+            color: #2c3e50;
+        }
+
+        .program-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        /* Testimoni Section Styles */
+        .testimoni-section {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+
+        .testimoni-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimoni-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f39c12;
+        }
+
+        .add-testimoni-btn {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .add-testimoni-btn:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+
+        .empty-testimoni {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #7f8c8d;
+        }
+
+        /* Modal Styles untuk Testimoni */
+        .testimoni-modal .modal-content {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .testimoni-modal .modal-header {
+            border-bottom: 2px solid #f39c12;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .testimoni-modal .modal-title {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .testimoni-modal .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .testimoni-modal .close-modal:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #f39c12;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #f39c12;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: #f39c12;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-cancel {
+            padding: 10px 20px;
+            border: 2px solid #6c757d;
+            background: white;
+            color: #6c757d;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel:hover {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-submit {
+            padding: 10px 20px;
+            background: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-video-section {
+                height: 80vh;
+                min-height: 500px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+                margin-bottom: 2rem;
+            }
+
+            .btn-hero {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .sambutan-content {
+                padding-left: 0;
+                margin-top: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .dekan-section,
+            .visi-misi-section,
+            .contact-section-full { /* Tambahkan untuk kontak */
+                padding: 3rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .dekan-photo img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .vision-card,
+            .mission-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* --- CONTACT SECTION STYLES (FROM NEW CODE) --- */
+        .contact-section-full {
+            padding: 5rem 0;
+            background: #fff;
+        }
+
+        .contact-card-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .divider-contact {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+        }
+        
+        .contact-info-block {
+            padding: 25px;
+        }
+        
+        .contact-info-block div {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #444;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info-block div i {
+            color: #f39c12;
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-info-block .postal-code {
+            font-size: 14px;
+            color: #666;
+            margin-left: 30px; /* Aligment with other info */
+        }
+
+        .contact-info-block a {
+            color: #1a73e8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info-block a:hover {
+            color: #0d47a1;
+        }
+        
+        .map-section-block {
+            padding: 0 25px 25px;
+        }
+        
+        .map-section-block .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            /* Resetting title style for contact section */
+        }
+        
+        .location-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+        }
+        
+        .location-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .location-address {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .stars {
+            color: #f8c231;
+            font-size: 16px;
+            margin-right: 5px;
+        }
+        
+        .reviews {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .map-link {
+            font-size: 14px;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        .map-link:hover {
+            text-decoration: underline;
+        }
+        
+        .related-locations {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .related-location {
+            font-size: 14px;
+            color: #555;
+            padding: 8px;
+            background-color: #eee;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .google-info {
+            font-size: 12px;
+            color: #888;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        /* --- END CONTACT SECTION STYLES --- */
+
+        /* Footer Styles */
+        .footer-section {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-logo img {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+
+        .footer-section h5 {
+            color: #FFEA00;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #FFEA00;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #FFEA00;
+        }
+
+        .footer-bottom {
+            background-color: #212331;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        /* Adjustments for Kontakt on Mobile */
+        @media (max-width: 600px) {
+            .related-locations {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header id="header" class="headerr">
+        <div class="header-middle p-0 bg-lightest xs-text-center"
+            style="background-image: url(https://mipa.untan.ac.id/images/mipa.jpg); background-size: cover; background-position: center;">
+            <div class="container pt-20 pb-20">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-5">
+                        <a class="menuzord-brand pull-left flip sm-pull-center mb-15" href="https://mipa.untan.ac.id">
+                            <img src="https://mipa.untan.ac.id/images/logo-mipa-dark.png" alt="FMIPA UNTAN"
+                                style="max-height: 55px !important;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-nav">
+            <div class="header-nav-wrapper navbar-scrolltofixed bg-white">
+                <div class="container">
+                    <nav id="menuzord" class="menuzord default menuzord-responsive">
+                        <button class="menuzord-toggle" onclick="toggleMenu()">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        
+                        <ul class="menuzord-menu" id="mainMenu">
+                            <li id="beranda" class="active">
+                                <a href="https://mipa.untan.ac.id">Beranda</a>
+                            </li>
+
+                            <li id="tentang_kami">
+                                <a href="#">Tentang Kami</a>
+                                <ul class="dropdown">
+                                    <li id="sejarah">
+                                        <a href="https://mipa.untan.ac.id/tentang-kami/sejarah">Sejarah</a>
+                                    </li>
+                                    <li id="visi-misi-tujuan">
+                                        <a href="https://mipa.untan.ac.id/tentang-kami/visi-misi-tujuan">Visi, Misi dan Tujuan</a>
+                                    </li>
+                                    <li id="renstra">
+                                        <a href="https://mipa.untan.ac.id/tentang-kami/rencana-strategis">Rencana Strategis</a>
+                                    </li>
+                                    <li id="struktur-organisasi">
+                                        <a href="#">Struktur Organisasi</a>
+                                        <ul class="dropdown">
+                                            <li id="pimpinan-fakultas">
+                                                <a href="https://mipa.untan.ac.id/tentang-kami/struktur-organisasi/pimpinan-fakultas">Pimpinan Fakultas</a>
+                                            </li>
+                                            <li id="jurusan-prodi">
+                                                <a href="https://mipa.untan.ac.id/tentang-kami/struktur-organisasi/jurusan-prodi">Jurusan dan Prodi</a>
+                                            </li>
+                                            <li id="senat-fakultas">
+                                                <a href="https://mipa.untan.ac.id/tentang-kami/struktur-organisasi/senat-fakultas">Anggota Senat</a>
+                                            </li>
+                                            <li id="tenaga-kependidikan">
+                                                <a href="https://mipa.untan.ac.id/tentang-kami/struktur-organisasi/tenaga-kependidikan">Tenaga Kependidikan</a>
+                                            </li>
+                                            <li id="tenaga-pengajar">
+                                                <a href="https://mipa.untan.ac.id/tentang-kami/struktur-organisasi/tenaga-pengajar">Tenaga Pengajar</a>
+                                            </li>
+                                            <li id="kepala-lab">
+                                                <a href="https://mipa.untan.ac.id/tentang-kami/struktur-organisasi/kepala-laboratorium">Kepala Laboratorium</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="akreditasi">
+                                        <a href="https://mipa.untan.ac.id/tentang-kami/akreditasi">Akreditasi</a>
+                                    </li>
+                                    <li id="direktori-kepakaran">
+                                        <a href="https://heyzine.com/flip-book/17ba996138.html" target="_blank">Buku Direktori Kepakaran</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li id="akademik">
+                                <a href="#">Akademik</a>
+                                <ul class="dropdown">
+                                    <li id="daftar-ulang">
+                                        <a href="https://mipa.untan.ac.id/akademik/daftar-ulang">SOP Pendaftaran Ulang</a>
+                                    </li>
+                                    <li id="info-ukt">
+                                        <a href="https://mipa.untan.ac.id/akademik/info-ukt">Informasi UKT</a>
+                                    </li>
+                                    <li id="sop">
+                                        <a href="https://mipa.untan.ac.id/akademik/sop-pelayanan-akademik">SOP Pelayanan Akademik</a>
+                                    </li>
+                                    <li id="surat">
+                                        <a href="http://s.id/akademik-fmipa" target="_blank">Surat Menyurat</a>
+                                    </li>
+                                    <li id="kalender">
+                                        <a href="https://mipa.untan.ac.id/file/berkas/c7c1fe91b06898d7d65d4f4b044a69efkalender-akademik-sarjana.pdf" target="_blank">Kalender Akademik</a>
+                                    </li>
+                                    <li id="kalender-pascasarjana">
+                                        <a href="https://mipa.untan.ac.id/file/berkas/8b8ff990eebb6c58012731f171e89d23KALENDER AKADEMIK PROGRAM PASCASARJANA FMIPA.pdf" target="_blank">Kalender Akademik Pascasarjana</a>
+                                    </li>
+                                    <li id="panduan">
+                                        <a href="https://heyzine.com/flip-book/857c03f451.html" target="_blank">Pedoman Akademik</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li id="program-pendidikan">
+                                <a href="#">Web Prodi</a>
+                                <ul class="dropdown">
+                                    <li><a href="https://biologi.fmipa-untan.id/" target="_blank">Website Jurusan Biologi</a></li>
+                                    <li><a href="https://marinescience.untan.ac.id/" target="_blank">Website Jurusan Ilmu Kelautan</a></li>
+                                    <li><a href="http://chemistry.untan.ac.id/" target="_blank">Website Jurusan Kimia</a></li>
+                                    <li><a href="http://sisfo.untan.ac.id" target="_blank">Website Jurusan Sistem Informasi</a></li>
+                                    <li><a href="http://siskom.untan.ac.id/" target="_blank">Website Jurusan Sistem Komputer</a></li>
+                                    <li><a href="https://fisika.fmipa.untan.ac.id" target="_blank">Website Prodi Fisika</a></li>
+                                    <li><a href="http://geofisika.fmipa-untan.id" target="_blank">Website Prodi Geofisika</a></li>
+                                    <li><a href="http://math.fmipa.untan.ac.id/" target="_blank">Website Prodi Matematika</a></li>
+                                    <li><a href="https://s1stat.fmipa.untan.ac.id/" target="_blank">Website Prodi Statistika</a></li>
+                                    <li><a href="https://untan.ac.id/" target="_blank">Website Universitas Tanjungpura</a></li>
+                                </ul>
+                            </li>
+
+                            <li id="penelitian-pengabdian">
+                                <a href="#">Penelitian & PKM</a>
+                                <ul class="dropdown">
+                                    <li id="penelitian">
+                                        <a href="https://mipa.untan.ac.id/penelitian-pengabdian/penelitian">Penelitian</a>
+                                    </li>
+                                    <li id="pengabdian">
+                                        <a href="https://mipa.untan.ac.id/penelitian-pengabdian/pengabdian-kepada-masyarakat">Pengabdian kepada Masyarakat</a>
+                                    </li>
+                                    <li id="publikasi">
+                                        <a href="https://mipa.untan.ac.id/penelitian-pengabdian/publikasi">Publikasi</a>
+                                    </li>
+                                    <li id="roadmap">
+                                        <a href="https://mipa.untan.ac.id/file/berkas/42b221cf41b5d6d87435186664b4742bRoad Map Penelitian dan Pengabdian kepada Masyarakat Tahun 2022.pdf" target="_blank">Roadmap</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li id="jurnal">
+                                <a href="#">Jurnal</a>
+                                <ul class="dropdown">
+                                    <li><a href="http://jurnal.untan.ac.id/index.php/jbmstr" target="_blank">BIMASTER</a></li>
+                                    <li><a href="http://jurnal.untan.ac.id/index.php/jcskommipa" target="_blank">Jurnal Coding Sistem Komputer Untan</a></li>
+                                    <li><a href="http://jurnal.untan.ac.id/index.php/jkkmipa" target="_blank">Jurnal Kimia Khatulistiwa</a></li>
+                                    <li><a href="http://jurnal.untan.ac.id/index.php/jpositron" target="_blank">Jurnal Positron</a></li>
+                                    <li><a href="http://jurnal.untan.ac.id/index.php/lk" target="_blank">Laut Katulistiwa</a></li>
+                                    <li><a href="http://jurnal.untan.ac.id/index.php/jp" target="_blank">Orbital</a></li>
+                                    <li><a href="http://jurnal.untan.ac.id/index.php/jpfu" target="_blank">Prisma Fisika</a></li>
+                                    <li><a href="http://jurnal.untan.ac.id/index.php/jprb" target="_blank">PROTOBIONT</a></li>
+                                </ul>
+                            </li>
+
+                            <li id="kemahasiswaan">
+                                <a href="#">Kemahasiswaan</a>
+                                <ul class="dropdown">
+                                    <li id="organisasi-mahasiswa">
+                                        <a href="https://mipa.untan.ac.id/kemahasiswaan/organisasi-mahasiswa">Organisasi Mahasiswa</a>
+                                    </li>
+                                    <li id="prestasi-mahasiswa">
+                                        <a href="https://mipa.untan.ac.id/kemahasiswaan/prestasi-mahasiswa">Prestasi Mahasiswa</a>
+                                    </li>
+                                    <li id="beasiswa">
+                                        <a href="https://mipa.untan.ac.id/kemahasiswaan/beasiswa">Beasiswa</a>
+                                    </li>
+                                    <li id="pengumuman">
+                                        <a href="https://mipa.untan.ac.id/kemahasiswaan/pengumuman">Pengumuman</a>
+                                    </li>
+                                    <li id="ikatan-alumni">
+                                        <a href="https://mipa.untan.ac.id/kemahasiswaan/ikatan-alumni">Ikatan Alumni</a>
+                                    </li>
+                                    <li id="pendataan-alumni">
+                                        <a href="https://mipa.untan.ac.id/kemahasiswaan/pendataan-alumni">Pendataan Alumni</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li id="penjaminan-mutu">
+                                <a href="https://mipa.untan.ac.id/penjaminan-mutu">PMF</a>
+                            </li>
+
+                            <li id="fasilitas">
+                                <a href="https://mipa.untan.ac.id/fasilitas">Fasilitas</a>
+                            </li>
+
+                            <li id="kerjasama">
+                                <a href="https://mipa.untan.ac.id/kerjasama">Kerjasama</a>
+                            </li>
+
+                            <li id="wbs">
+                                <a href="https://mipa.untan.ac.id/wbs">WBS</a>
+                            </li>
+
+                            <li id="ppid">
+                                <a href="https://ppid.untan.ac.id/ppid-pelaksana/fakultas-matematika-dan-ipa" target="_blank">PPID</a>
+                            </li>
+
+                            <li id="repo-ta">
+                                <a href="https://mipa.untan.ac.id/repositori-ta">Repo TA</a>
+                            </li>
+
+                            <li id="lpdp">
+                                <a href="#">LPDP</a>
+                                <ul class="dropdown">
+                                    <li id="s2-kimia">
+                                        <a href="https://mipa.untan.ac.id/lihat-halaman/beasiswa-lpdp-s2-kimia">S2 Kimia</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li id="kontak">
+                                <a href="#kontak">Kontak</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-video-section">
+        <div class="video-container">
+            <video autoplay muted loop playsinline id="heroVideo">
+                <source src="c:\Users\ASUS\Downloads\KHUSU\videoplayback.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="scroll-indicator">
+            <a href="#content">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="dekan" class="dekan-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="dekan-photo">
+                        <img src="https://mipa.untan.ac.id/file/pimpinan_fakultas/f1374dc622a36199ba59c09a1b28cd0e.png" 
+                            alt="Dekan FMIPA UNTAN" class="img-fluid">
+                        <div class="dekan-info">
+                            <h4>Prof. Dr. Gusrizal, S.Si., M.Si.</h4>
+                            <p>Dekan FMIPA UNTAN</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="sambutan-content">
+                        <h2 class="section-title">Sambutan Dekan</h2>
+                        <div class="sambutan-text">
+                            <p>Assalamu'alaikum Warahmatullahi Wabarakatuh,</p>
+                            <p>Selamat datang di website resmi Fakultas Matematika dan Ilmu Pengetahuan Alam Universitas Tanjungpura. 
+                            (FMIPA UNTAN) Pontianak.</p>
+                            <p>Pada awal berdirinya tahun 2002, FMIPA Untan bernama Fakultas Matematika dan Ilmu Pengetahuan Alam (Persiapan).
+                            Ketika pertama kali menerima mahasiswa pada tahun akademik 2002/2003 , FMIPA Untan menyelenggarakan proses pembelajaran pada empat program studi jenjang S-1 yaitu Matematika, Fisika, Kimia, dan Biologi. Saat ini FMIPA Untan menyelenggarakan sembilan program studi jenjang S-1 (Matematika, Fisika, Kimia, Biologi, Rekayasa Sistem Komputer, Ilmu Kelautan, Sistem Informasi, Statistik, Geofisika). dan satu program studi jenjang S-2 (Kimia).  Website ini dikembangkan guna memenuhi kebutuhan internal sekaligus sebagai media informasi kegiatan FMIPA bagi masyarakat, stakeholders, mahasiswa, orangtua mahasiswa, dan masyarakat profesi. Informasi mengenai sejarah, profil, layanan akademik, kerja sama, program yang ditawarkan serta aktivitas lainnya dapat ditelusuri pada website ini. FMIPA Untan Mempunyai visi untuk "Menjadi institusi unggul dalam tranformasi, pengembangan dan penyebarluasan sains dan teknologi berbasi lingkungan tropis dengan luaran berdaya saing global". Sebagai wujud kepedulian FMIPA Untan terhadap tujuan pembangunan nasional, FMIPA Untan terus berupaya melakukan evaluasi, pengembangan, dan pembaruan untuk merespon kebutuhan stakeholders. FMIPA Untan selalu terus mengembangkan dirinya dan melakukan perbaikan dalam berbagai sisi sesuai Komitmen kami untuk menjadikan "QUALITY IS OUR CONCERN" Dengan senang hati kami menerima komentar, saran, dan kerja sama guna perbaikan secara berkesinambungan dalam upaya berkontribusi dalam pengembangan riset dan pengetahuan di Indonesia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visi-misi" class="visi-misi-section">
+        <div class="container">
+            <h2 class="section-title text-center">Visi & Misi</h2>
+            <div class="row mt-5">
+                <div class="col-lg-6 mb-4">
+                    <div class="vision-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Visi</h3>
+                        <p>Menjadi institusi unggul dalam tranformasi, 
+                            pengembangan dan penyebarluasan sains dan teknologi berbasis lingkungan tropis dengan luaran berdaya saing global.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="mission-card">
+                        <div class="card-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3>Misi</h3>
+                        <ul>
+                            <li>Menyelenggarakan aktivitas Pendidikan Tinggi secara terpadu untuk menghasilkan luaran berkualitas yang adaptif terhadap pengembangan sains dan teknologi dengan tetap memegang teguh jadi diri bangsa.</li>
+                            <li>Melaksanakan aktivitas riset yang terarah, berkesinambungan, dan berwawasan lingkungan dengan berorientasi pada pengembangan potensi lokal Kalimantan Barat.</li>
+                            <li>Melakukan kegiatan Pengabdian yang berdampak bagi peningkatan kualitas lingkungan dan kesejahteraan masyarakat.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="program-studi" class="program-studi-section">
+        <div class="container">
+            <h2 class="section-title text-center">Program Studi</h2>
+            <p class="text-center text-muted mb-5">FMIPA UNTAN menyelenggarakan 9 program studi unggulan</p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card program-card" data-bs-toggle="modal" data-bs-target="#modalMatematika" style="cursor: pointer;">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Matematika">
+                        <div class="card-body">
+                            <h5 class="card-title">Matematika</h5>
+                            <p class="card-text">Program studi yang fokus pada pengembangan ilmu matematika murni dan terapan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card program-card" data-bs-toggle="modal" data-bs-target="#modalFisika" style="cursor: pointer;">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Fisika">
+                        <div class="card-body">
+                            <h5 class="card-title">Fisika</h5>
+                            <p class="card-text">Mempelajari fenomena alam dan hukum-hukum fisika untuk pengembangan teknologi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card program-card" data-bs-toggle="modal" data-bs-target="#modalKimia" style="cursor: pointer;">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Kimia">
+                        <div class="card-body">
+                            <h5 class="card-title">Kimia</h5>
+                            <p class="card-text">Program studi yang mengkaji struktur, sifat, dan perubahan materi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card program-card" data-bs-toggle="modal" data-bs-target="#modalBiologi" style="cursor: pointer;">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.YOYO7LgEXoq2g_sZkwaVYQHaEK?pid=ImgDet&w=189&h=106&c=7&dpr=1,3&o=7&rm=3" class="card-img-top" alt="Biologi">
+                        <div class="card-body">
+                            <h5 class="card-title">Biologi</h5>
+                            <p class="card-text">Mempelajari makhluk hidup dan hubungannya dengan lingkungan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card program-card" data-bs-toggle="modal" data-bs-target="#modalSistemInformasi" style="cursor: pointer;">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Sistem Informasi">
+                        <div class="card-body">
+                            <h5 class="card-title">Sistem Informasi</h5>
+                            <p class="card-text">Integrasi teknologi informasi dengan proses bisnis organisasi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card program-card" data-bs-toggle="modal" data-bs-target="#modalSistemKomputer" style="cursor: pointer;">
+                        <img src="https://educ.gramedia.com/wp-content/uploads/2023/03/cyber-2377718__340.jpg" class="card-img-top" alt="Sistem Komputer">
+                        <div class="card-body">
+                            <h5 class="card-title">Sistem Komputer</h5>
+                            <p class="card-text">Rekayasa sistem komputer dan jaringan untuk solusi teknologi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card program-card" data-bs-toggle="modal" data-bs-target="#modalIlmuKelautan" style="cursor: pointer;">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Ilmu Kelautan">
+                        <div class="card-body">
+                            <h5 class="card-title">Ilmu Kelautan</h5>
+                            <p class="card-text">Mempelajari ekosistem laut dan potensi sumber daya kelautan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card program-card" data-bs-toggle="modal" data-bs-target="#modalStatistika" style="cursor: pointer;">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Statistika">
+                        <div class="card-body">
+                            <h5 class="card-title">Statistika</h5>
+                            <p class="card-text">Analisis data dan pengambilan keputusan berbasis statistika.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card program-card" data-bs-toggle="modal" data-bs-target="#modalGeofisika" style="cursor: pointer;">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Geofisika">
+                        <div class="card-body">
+                            <h5 class="card-title">Geofisika</h5>
+                            <p class="card-text">Mempelajari bumi dengan metode fisika untuk eksplorasi sumber daya.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimoni" class="testimoni-section">
+        <div class="container">
+            <h2 class="section-title text-center">Apa Kata Mereka</h2>
+            <p class="text-center text-muted mb-5">Suara dari mahasiswa, alumni, dan mitra yang telah merasakan pengalaman belajar di FMIPA UNTAN</p>
+            
+            <div class="testimoni-card">
+                <div class="testimoni-header">
+                    <h3 class="mb-0" style="font-size: 1.5rem; font-weight: 600;">Testimoni</h3>
+                    <button class="add-testimoni-btn" data-bs-toggle="modal" data-bs-target="#testimoniModal">
+                        <i class="fas fa-plus me-2"></i>Tambah Testimoni
+                    </button>
+                </div>
+
+                <div class="empty-testimoni">
+                    <i class="fas fa-comments fa-3x mb-3 text-muted"></i>
+                    <h4 class="text-muted mb-2">Belum Ada Testimoni</h4>
+                    <p class="text-muted">
+                        Jadilah yang pertama berbagi pengalaman Anda dan menginspirasi orang lain dengan cerita Anda!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="contact-section-full">
+        <div class="container">
+            <h2 class="section-title text-center">Hubungi Kami</h2>
+            <p class="text-center text-muted mb-5">Kantor Fakultas Matematika dan Ilmu Pengetahuan Alam UNTAN</p>
+            
+            <div class="contact-card-container">
+                <div class="contact-info-block">
+                    <h5 style="color: #2c3e50; font-weight: 600; margin-bottom: 20px;">Informasi Kontak</h5>
+                    
+                    <div class="address">
+                        <i class="fas fa-map-marker-alt"></i>
+                        JL. Prof. Dr. H. Hadari Nawawi
+                    </div>
+                    <div class="postal-code">Kode Pos: 78124</div>
+                    <div class="phone">
+                        <i class="fas fa-phone"></i>
+                        (0561) 577963
+                    </div>
+                    <div class="email">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@fmipa.untan.ac.id">info@fmipa.untan.ac.id</a>
+                    </div>
+                    <div class="website">
+                        <i class="fas fa-globe"></i>
+                        <a href="https://mipa.untan.ac.id" target="_blank">mipa.untan.ac.id</a>
+                    </div>
+                </div>
+                
+                <div class="divider-contact"></div>
+                
+                <div class="map-section-block">
+                    <h5 class="section-title">Peta Lokasi Fakultas MIPA</h5>
+                    
+                    <div class="location-card">
+                        <div class="location-title">Anvaraan Rakken Pontianak</div>
+                        <div class="location-address">
+                            <strong>Fakultas Matematika dan Ilmu...</strong><br>
+                            Jl. Professor Dokter H. Hadari<br>
+                            Nawawi, Bansir Laut, Kec. Pontianak<br>
+                            Tenggara, Kota Pontianak, Kalimantan Barat
+                        </div>
+                        <div class="rating">
+                            <div class="stars">★★★★</div>
+                            <div class="reviews">4,6 ★★★★ 107 ulasan</div>
+                        </div>
+                        <a href="#" class="map-link">Lihat peta lebih besar</a>
+                    </div>
+                    
+                    <div class="related-locations">
+                        <div class="related-location">Universitas Tanjungpura</div>
+                        <div class="related-location">Ramah Sakti Universitas Tanjungpura</div>
+                        <div class="related-location">Pontianak Laptop</div>
+                        <div class="related-location">Ramah Sakti Universitas Tanjungpura</div>
+                    </div>
+                    
+                    <div class="google-info">
+                        Google<br>
+                        Pintasan keyboard<br>
+                        Data peta 2023/5<br>
+                        Persyaratan<br>
+                        Laporkan masalah peta
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="footer-logo">
+                        <img src="https://mipa.untan.ac.id/images/logo-mipa-dark.png" alt="FMIPA UNTAN" style="filter: brightness(0) invert(1);">
+                    </div>
+                    <p>Fakultas Matematika dan Ilmu Pengetahuan Alam (FMIPA) Universitas Tanjungpura.</p>
+                    <p>Jl. Prof. Dr. H. Hadari Nawawi, Pontianak 78124</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5>Link Cepat</h5>
+                    <ul>
+                        <li><a href="#dekan">Sambutan Dekan</a></li>
+                        <li><a href="#visi-misi">Visi & Misi</a></li>
+                        <li><a href="#program-studi">Program Studi</a></li>
+                        <li><a href="https://mipa.untan.ac.id/fasilitas">Fasilitas</a></li>
+                        <li><a href="https://mipa.untan.ac.id/kerjasama">Kerjasama</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-5 mb-4">
+                    <h5>Kontak Kami</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> JL. Prof. Dr. H. Hadari Nawawi, Pontianak</p>
+                    <p><i class="fas fa-phone me-2"></i> (0561) 577963</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@fmipa.untan.ac.id</p>
+                    </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <div class="container">
+            &copy; 2025 Fakultas MIPA UNTAN. All Rights Reserved.
+        </div>
+    </div>
+    <div class="modal fade program-modal" id="modalMatematika" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Program Studi Matematika</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="program-info">
+                        <p><strong>Jenjang:</strong> S1</p>
+                        <p><strong>Akreditasi:</strong> A</p>
+                        <p><strong>Durasi Studi:</strong> 4 Tahun (8 Semester)</p>
+                    </div>
+                    <div class="program-details">
+                        <h6>Deskripsi Program Studi</h6>
+                        <p>Program Studi Matematika FMIPA UNTAN fokus pada pengembangan ilmu matematika murni dan terapan. 
+                        Lulusan dipersiapkan untuk berkontribusi dalam berbagai bidang seperti pendidikan, penelitian, 
+                        industri, dan teknologi.</p>
+                        
+                        <h6 class="mt-3">Prospek Karir</h6>
+                        <ul>
+                            <li>Data Scientist</li>
+                            <li>Analis Sistem</li>
+                            <li>Dosen/Guru Matematika</li>
+                            <li>Risk Analyst</li>
+                            <li>Quantitative Analyst</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade program-modal" id="modalSistemInformasi" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Program Studi Sistem Informasi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="program-info">
+                        <p><strong>Jenjang:</strong> S1</p>
+                        <p><strong>Akreditasi:</strong> A</p>
+                        <p><strong>Durasi Studi:</strong> 4 Tahun (8 Semester)</p>
+                    </div>
+                    <div class="program-details">
+                        <h6>Deskripsi Program Studi</h6>
+                        <p>Program Studi Sistem Informasi mengintegrasikan teknologi informasi dengan proses bisnis 
+                        untuk menciptakan solusi sistem yang efektif.</p>
+                        <p>Program studi ini menggabungkan ilmu komputer, manajemen, dan bisnis untuk menciptakan solusi teknologi 
+                        yang dapat meningkatkan kinerja organisasi di berbagai sektor.</p>
+                        
+                        <h6 class="mt-4">Prospek Karir</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>System Analyst</li>
+                                    <li>Business Analyst</li>
+                                    <li>IT Consultant</li>
+                                    <li>Database Administrator</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>Web Developer</li>
+                                    <li>IT Project Manager</li>
+                                    <li>Data Analyst</li>
+                                    <li>UI/UX Designer</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade testimoni-modal" id="testimoniModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bagikan Testimoni Anda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted mb-4">Sampaikan pengalaman Anda belajar di FMIPA UNTAN</p>
+                    
+                    <form id="testimoniForm">
+                        <div class="form-group">
+                            <label class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap Anda" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" placeholder="nama@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Angkatan</label>
+                            <select class="form-select" required>
+                                <option value="">Pilih Angkatan</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="alumni">Alumni</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Program Studi</label>
+                            <select class="form-select" required>
+                                <option value="">Pilih Program Studi</option>
+                                <option value="matematika">Matematika</option>
+                                <option value="fisika">Fisika</option>
+                                <option value="kimia">Kimia</option>
+                                <option value="biologi">Biologi</option>
+                                <option value="sistem-informasi">Sistem Informasi</option>
+                                <option value="sistem-komputer">Sistem Komputer</option>
+                                <option value="ilmu-kelautan">Ilmu Kelautan</option>
+                                <option value="statistika">Statistika</option>
+                                <option value="geofisika">Geofisika</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Testimoni</label>
+                            <textarea class="form-textarea" placeholder="Bagikan pengalaman Anda belajar di FMIPA UNTAN..." required></textarea>
+                        </div>
+
+                        <div class="modal-actions">
+                            <button type="button" class="btn-cancel" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn-submit">Kirim</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    // Fungsi untuk toggle menu mobile
+    function toggleMenu() {
+        const mainMenu = document.getElementById('mainMenu');
+        mainMenu.classList.toggle('show');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const testimoniForm = document.getElementById('testimoniForm');
+        
+        if (testimoniForm) {
+            testimoniForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validasi form
+                const inputs = this.querySelectorAll('input, select, textarea');
+                let isValid = true;
+                
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.style.borderColor = '#dc3545';
+                    } else {
+                        input.style.borderColor = '#28a745';
+                    }
+                });
+                
+                if (isValid) {
+                    // Simpan data testimoni
+                    const formData = {
+                        nama: this.querySelector('input[type="text"]').value,
+                        email: this.querySelector('input[type="email"]').value,
+                        angkatan: this.querySelectorAll('select')[0].value,
+                        programStudi: this.querySelectorAll('select')[1].value,
+                        testimoni: this.querySelector('textarea').value,
+                        tanggal: new Date().toLocaleDateString('id-ID')
+                    };
+                    
+                    console.log('Testimoni dikirim:', formData);
+                    
+                    // Tampilkan pesan sukses
+                    alert('Terima kasih! Testimoni Anda telah berhasil dikirim.');
+                    
+                    // Tutup modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('testimoniModal'));
+                    modal.hide();
+                    
+                    // Reset form
+                    this.reset();
+                } else {
+                    alert('Harap lengkapi semua field yang diperlukan.');
+                }
+            });
+            
+            // Reset border color saat input
+            const formInputs = testimoniForm.querySelectorAll('input, select, textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.style.borderColor = '#e9ecef';
+                    }
+                });
+            });
+        }
+    });
+    </script>
+</body>
+</html>
