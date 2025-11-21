@@ -17,10 +17,16 @@
 
         body {
             font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,  #ffffff 0%,#ffffff 15%,#E8D0F0 25%,#E0B0E0 35%,#8102DE 45%,#FF5733 55%,#FFD700 65%,#E0B0E0 75%,#E8D0F0 85%,#ffffff 95%,#ffffff 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+            background-size: 200% 200%;
+            animation: gentleGradient 15s ease infinite;
         }
 
-        /* Header with Image Background */
+        /* Header*/
         .header-middle {
+            background:#fff;
             background-size: cover;
             background-position: center;
             padding: 20px 0;
@@ -64,7 +70,7 @@
 
         .menuzord-menu > li > a:hover,
         .menuzord-menu > li.active > a {
-            background-color: #FFEA00;
+            background-color: #FFD700;
             color: #212331;
             border-radius: 5px;
             box-shadow: 1px 2px 4px #888888;
@@ -103,7 +109,7 @@
         }
 
         .menuzord-menu .dropdown li a:hover {
-            background-color: #FFEA00;
+            background-color: #FFD700;
             color: #000;
         }
 
@@ -116,7 +122,7 @@
         /* Mobile Menu Toggle */
         .menuzord-toggle {
             display: none;
-            background: #FFEA00;
+            background: #FFD700;
             border: none;
             padding: 10px 15px;
             cursor: pointer;
@@ -256,7 +262,7 @@
         }
 
         .btn-primary-hero:hover {
-            background: #FFA500;
+            background: #FFD700;
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
         }
@@ -311,7 +317,7 @@
 
         /* Dekan Section */
         .dekan-section {
-            background: white;
+            background:#ffffff;
             padding: 5rem 0;
         }
 
@@ -354,7 +360,7 @@
         /* Visi Misi Section */
         .visi-misi-section {
             padding: 5rem 0;
-            background: #f8f9fa;
+            background: #E0B0E0;
         }
 
         .vision-card,
@@ -417,7 +423,7 @@
         /* Program Studi Section Styles */
         .program-studi-section {
             padding: 5rem 0;
-            background: white;
+                        background:linear-gradient(135deg,  #ffffff 0%,#FFD700 5%,#41529a 16%,#ffffff 10%,#E8D0F0 18%,#ff5833 19%,#ffffff 25%,#E0B0E0 35%,#ffffff,#FFD700 40%,#ffffff 45%,#ffffff 45%,#8102DE 50%, #ffffff 55%, #FF5733 65%, #ffffff 70%,#ffffff 75%,#FFD700 80%,#41529a 16%,#E0B0E0 85%,#E8D0F0 90%,#ffffff 95%,#ffffff 100%);
         }
 
         .program-card {
@@ -702,7 +708,7 @@
 
             .dekan-section,
             .visi-misi-section,
-            .contact-section-full { /* Tambahkan untuk kontak */
+            .contact-section-full { 
                 padding: 3rem 0;
             }
         }
@@ -723,205 +729,32 @@
             }
         }
 
-        /* --- CONTACT SECTION STYLES (FROM NEW CODE) --- */
-        .contact-section-full {
-            padding: 5rem 0;
-            background: #fff;
-        }
-
-        .contact-card-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .divider-contact {
-            height: 1px;
-            background: linear-gradient(to right, transparent, #ddd, transparent);
-        }
-        
-        .contact-info-block {
-            padding: 25px;
-        }
-        
-        .contact-info-block div {
-            font-size: 16px;
-            margin-bottom: 10px;
-            color: #444;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-info-block div i {
-            color: #f39c12;
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .contact-info-block .postal-code {
-            font-size: 14px;
-            color: #666;
-            margin-left: 30px; /* Aligment with other info */
-        }
-
-        .contact-info-block a {
-            color: #1a73e8;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-info-block a:hover {
-            color: #0d47a1;
-        }
-        
-        .map-section-block {
-            padding: 0 25px 25px;
-        }
-        
-        .map-section-block .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            /* Resetting title style for contact section */
-        }
-        
-        .location-card {
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            background: #f9f9f9;
-        }
-        
-        .location-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        
-        .location-address {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-        
-        .rating {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .stars {
-            color: #f8c231;
-            font-size: 16px;
-            margin-right: 5px;
-        }
-        
-        .reviews {
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .map-link {
-            font-size: 14px;
-            color: #1a73e8;
-            text-decoration: none;
-        }
-        
-        .map-link:hover {
-            text-decoration: underline;
-        }
-        
-        .related-locations {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        
-        .related-location {
-            font-size: 14px;
-            color: #555;
-            padding: 8px;
-            background-color: #eee;
-            border-radius: 4px;
-            text-align: center;
-        }
-        
-        .google-info {
-            font-size: 12px;
-            color: #888;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        /* --- END CONTACT SECTION STYLES --- */
-
-        /* Footer Styles */
-        .footer-section {
-            background-color: #2c3e50;
-            color: white;
-            padding: 40px 0;
-            font-size: 0.9rem;
-        }
-
-        .footer-logo img {
-            max-width: 150px;
-            margin-bottom: 15px;
-        }
-
-        .footer-section h5 {
-            color: #FFEA00;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li a {
-            color: #ccc;
-            text-decoration: none;
-            line-height: 2;
-            transition: color 0.3s;
-        }
-
-        .footer-section ul li a:hover {
-            color: #FFEA00;
-        }
-
-        .social-icons a {
-            color: white;
-            font-size: 1.2rem;
-            margin-right: 15px;
-            transition: color 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: #FFEA00;
-        }
-
-        .footer-bottom {
-            background-color: #212331;
-            padding: 15px 0;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #aaa;
-        }
-
-        /* Adjustments for Kontakt on Mobile */
-        @media (max-width: 600px) {
-            .related-locations {
-                grid-template-columns: 1fr;
+            :root {
+                --untan-yellow: #fbc02d;
+                --untan-dark: #41529a;
             }
-        }
+
+            .centered-header { text-align: center; margin-bottom: 40px; }
+            .centered-header h2 { font-weight: 800; color: var(--untan-dark); font-size: 2.2rem; margin-bottom: 10px; }
+            .header-divider { display: flex; align-items: center; justify-content: center; gap: 15px; }
+            .header-divider::before, .header-divider::after { content: ""; width: 60px; height: 2px; background-color: #e0e0e0; display: block; }
+            .header-divider i { color: #6c757d; font-size: 1.2rem; }
+
+            footer { background-color: var(--untan-dark); color: #fff; padding: 60px 0 30px; margin-top: auto; }
+            .footer-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+            .footer-title::after { content: ""; position: absolute; left: 0; bottom: 0; width: 40px; height: 3px; background-color: var(--untan-yellow); }
+            .footer-contact-item { display: flex; gap: 15px; margin-bottom: 15px; font-size: 0.9rem; color: #ccc; }
+            .footer-contact-item i { color: var(--untan-yellow); margin-top: 4px; }
+            
+            .footer-links { padding: 0; list-style: none; }
+            .footer-links li { margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
+            .footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; display: block; }
+            .footer-links a:hover { color: var(--untan-yellow); padding-left: 5px; }
+            
+            .map-container { border-radius: 8px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); height: 250px; }
+            .social-mini { display: flex; gap: 10px; margin-top: 20px; }
+            .social-mini a { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: 0.3s; font-size: 0.8rem; }
+            .social-mini a:hover { background: var(--untan-yellow); border-color: var(--untan-yellow); color: #000; }
 
     </style>
 </head>
@@ -1338,115 +1171,84 @@
         </div>
     </section>
 
-    <section id="kontak" class="contact-section-full">
+    <section id="kontak" class="section-padding bg-white">
         <div class="container">
-            <h2 class="section-title text-center">Hubungi Kami</h2>
-            <p class="text-center text-muted mb-5">Kantor Fakultas Matematika dan Ilmu Pengetahuan Alam UNTAN</p>
-            
-            <div class="contact-card-container">
-                <div class="contact-info-block">
-                    <h5 style="color: #2c3e50; font-weight: 600; margin-bottom: 20px;">Informasi Kontak</h5>
-                    
-                    <div class="address">
-                        <i class="fas fa-map-marker-alt"></i>
-                        JL. Prof. Dr. H. Hadari Nawawi
-                    </div>
-                    <div class="postal-code">Kode Pos: 78124</div>
-                    <div class="phone">
-                        <i class="fas fa-phone"></i>
-                        (0561) 577963
-                    </div>
-                    <div class="email">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@fmipa.untan.ac.id">info@fmipa.untan.ac.id</a>
-                    </div>
-                    <div class="website">
-                        <i class="fas fa-globe"></i>
-                        <a href="https://mipa.untan.ac.id" target="_blank">mipa.untan.ac.id</a>
-                    </div>
-                </div>
-                
-                <div class="divider-contact"></div>
-                
-                <div class="map-section-block">
-                    <h5 class="section-title">Peta Lokasi Fakultas MIPA</h5>
-                    
-                    <div class="location-card">
-                        <div class="location-title">Pontianak</div>
-                        <div class="location-address">
-                            <strong>Fakultas Matematika dan Ilmu...</strong><br>
-                            Jl. Professor Dokter H. Hadari<br>
-                            Nawawi, Bansir Laut, Kec. Pontianak<br>
-                            Tenggara, Kota Pontianak, Kalimantan Barat
-                        </div>
-                        <div class="rating">
-                            <div class="stars">★★★★</div>
-                            <div class="reviews">4,6 ★★★★ 107 ulasan</div>
-                        </div>
-                        <a href="#" class="map-link">Lihat peta lebih besar</a>
-                    </div>
-                    
-                    <div class="related-locations">
-                        <div class="related-location">Universitas Tanjungpura</div>
-                        <div class="related-location">Ramah Sakti Universitas Tanjungpura</div>
-                        <div class="related-location">Pontianak Laptop</div>
-                        <div class="related-location">Ramah Sakti Universitas Tanjungpura</div>
-                    </div>
-                    
-                    <div class="google-info">
-                        Google<br>
-                        Pintasan keyboard<br>
-                        Data peta 2023/5<br>
-                        Persyaratan<br>
-                        Laporkan masalah peta
-                    </div>
-                </div>
+            <div class="centered-header">
+                <h2>Hubungi Kami</h2>
+                <div class="header-divider"><i class="fas fa-envelope"></i></div>
+            </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer-section">
+    <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="footer-logo">
-                        <img src="https://mipa.untan.ac.id/images/logo-mipa-dark.png" alt="FMIPA UNTAN" style="filter: brightness(0) invert(1);">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center mb-4 bg-white p-2 rounded" style="width: fit-content">
+                        <img
+                            src="https://mipa.untan.ac.id/images/logo-mipa-light.png"
+                            alt="Logo"
+                            width="250"
+                            class="me-2"
+                        />
                     </div>
-                    <p>Fakultas Matematika dan Ilmu Pengetahuan Alam (FMIPA) Universitas Tanjungpura.</p>
-                    <p>Jl. Prof. Dr. H. Hadari Nawawi, Pontianak 78124</p>
-                    <div class="social-icons">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Jl. Prof. Dr. H. Hadari Nawawi, Pontianak, 78124</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(0561) 577963</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@fmipa.untan.ac.id</span>
+                    </div>
+                    <div class="social-mini">
+                        <a href="https://web.facebook.com/people/FMIPA-Untan/100062739466952/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/fmipauntan/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UCL0hwHYQsDuI5E0P795moag"><i class="fab fa-youtube"></i></a>
+                        <a href="https://x.com/fmipa_untan"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 
-                <div class="col-md-3 mb-4">
-                    <h5>Link Cepat</h5>
-                    <ul>
-                        <li><a href="#dekan">Sambutan Dekan</a></li>
-                        <li><a href="#visi-misi">Visi & Misi</a></li>
-                        <li><a href="#program-studi">Program Studi</a></li>
-                        <li><a href="https://mipa.untan.ac.id/fasilitas">Fasilitas</a></li>
-                        <li><a href="https://mipa.untan.ac.id/kerjasama">Kerjasama</a></li>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-title">Link Terkait</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://www.untan.ac.id/">Universitas Tanjungpura</a></li>
+                        <li><a href="https://biologi.fmipa-untan.id/">Website Jurusan Biologi</a></li>
+                        <li><a href="https://marinescience.untan.ac.id/">Website Jurusan Ilmu Kelautan</a></li>
+                        <li><a href="https://chemistry.untan.ac.id/">Website Jurusan Kimia</a></li>
+                        <li><a href="https://sisfo.untan.ac.id/">Website Jurusan Sistem Informasi</a></li>
+                        <li><a href="https://siskom.untan.ac.id/">Website Jurusan Sistem Komputer</a></li>
+                        <li><a href="https://fisika.fmipa.untan.ac.id/">Website Prodi Fisika</a></li>
+                        <li><a href="https://geofisika.fmipa-untan.id/id">Website Prodi Geofisika</a></li>
+                        <li><a href="https://math.fmipa.untan.ac.id/">Website Prodi Matematika</a></li>
+                        <li><a href="https://s1stat.fmipa.untan.ac.id/">Website Prodi Statistika</a></li>
                     </ul>
                 </div>
                 
-                <div class="col-md-5 mb-4">
-                    <h5>Kontak Kami</h5>
-                    <p><i class="fas fa-map-marker-alt me-2"></i> JL. Prof. Dr. H. Hadari Nawawi, Pontianak</p>
-                    <p><i class="fas fa-phone me-2"></i> (0561) 577963</p>
-                    <p><i class="fas fa-envelope me-2"></i> info@fmipa.untan.ac.id</p>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-title">Peta Lokasi Fakultas MIPA</h5>
+                    <div class="map-container shadow-sm">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.817962925064!2d109.34512331475377!3d-0.05896999999999193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e1d59909c9c7e41%3A0x87906044e2675515!2sFakultas%20MIPA%20Universitas%20Tanjungpura!5e0!3m2!1sid!2sid!4v1625543422405!5m2!1sid!2sid"
+                            width="100%"
+                            height="100%"
+                            style="border: 0"
+                            allowfullscreen=""
+                            loading="lazy"
+                        ></iframe>
                     </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary pt-4 mt-3 text-center">
+                <p class="small text-secondary mb-0">© 2025 FMIPA Universitas Tanjungpura. Syafira Aulianisa 2025.</p>
             </div>
         </div>
     </footer>
-    <div class="footer-bottom">
-        <div class="container">
-            &copy; 2025 Fakultas MIPA UNTAN. All Rights Reserved.
-        </div>
-    </div>
+    
     <div class="modal fade program-modal" id="modalMatematika" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
